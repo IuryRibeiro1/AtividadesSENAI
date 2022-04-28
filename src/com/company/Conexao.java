@@ -16,8 +16,9 @@ public class Conexao {
         try {
             connection = DriverManager.getConnection(DATABASE_URL, "root", "");
             stm = connection.createStatement();
-            stm.executeUpdate("update produtos set nome = 'Oleo' where idprodutos = '2'");
-            stm.executeUpdate("insert into produtos values ( 5, 'Biscoito' , 'R$ 2.99', '5 Unidades') ");
+            stm.executeUpdate("alter table produtos add column Validade varchar(30)");
+            stm.executeUpdate("alter table produtos drop column Validade");
+            stm.executeUpdate("insert into produtos values ( 6, 'Biscoito' , 'R$ 2.99', '5 Unidades'  , 'Valido até 28-04-2025') ");
             stm.executeUpdate("delete from produtos where idprodutos = '5'");
             rs = stm.executeQuery("select * from produtos");
 
